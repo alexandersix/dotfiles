@@ -137,8 +137,10 @@ return {
 				},
 				servers = {
 					-- ['intelephense'] = { "php" }, -- Can run instead of Pint
+					-- ['astro'] = { "astro" },
 					['lua_ls'] = { "lua" },
-					["null-ls"] = { "javascript", "typescript", "svelte", "vue", "php", "markdown", "mdx", "blade" },
+					["null-ls"] = { "javascript", "typescript", "svelte", "vue", "php", "markdown", "mdx",
+						"blade" },
 				}
 			})
 
@@ -149,7 +151,7 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.prettier.with({
-						extra_filetypes = { "svelte" }
+						extra_filetypes = { "astro", "svelte" }
 					}),
 					null_ls.builtins.formatting.blade_formatter,
 					null_ls.builtins.formatting.pint
