@@ -1,3 +1,3 @@
 local awful = require("awful")
 
-awful.spawn("picom")
+awful.spawn("picom --daemon")
