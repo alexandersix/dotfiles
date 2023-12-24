@@ -22,7 +22,6 @@ return {
 			-- Progress
 			{
 				"j-hui/fidget.nvim",
-				version = "legacy",
 			},
 
 			-- Snippets
@@ -156,9 +155,6 @@ return {
 					null_ls.builtins.formatting.blade_formatter,
 					null_ls.builtins.formatting.pint
 				},
-				on_attach = function(client, _)
-					require("lsp-format").on_attach(client)
-				end,
 			})
 		end
 	}
