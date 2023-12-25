@@ -37,3 +37,4 @@ set.nu = true
 set.errorbells = false
 set.incsearch = true
 set.wildmode = "longest:full,full"
+set.pumheight = 10

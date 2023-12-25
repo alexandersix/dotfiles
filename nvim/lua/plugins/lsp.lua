@@ -1,6 +1,7 @@
 return {
 	{
 		'VonHeikemen/lsp-zero.nvim',
+		branch = "v3.x",
 		dependencies = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' },
@@ -36,36 +37,44 @@ return {
 		config = function()
 			require("fidget").setup()
 
-			local lsp = require("lsp-zero")
-			lsp.preset("recommended")
+			local lsp_zero = require("lsp-zero")
 
-			-- Ensure these servers are always installed
-			lsp.ensure_installed({
-				'astro',
-				'bashls',
-				'clangd',
-				'cssls',
-				'dockerls',
-				'eslint',
-				'gopls',
-				'html',
-				'intelephense',
-				'jsonls',
-				'rust_analyzer',
-				'sqlls',
-				'lua_ls',
-				'svelte',
-				'tailwindcss',
-				'tsserver',
-				'vimls',
-				'volar',
-				'yamlls',
+			-- Automatic configuration of language servers
+			require("mason").setup({})
+			require('mason-lspconfig').setup({
+				ensure_installed = {
+					'astro',
+					'bashls',
+					'clangd',
+					'cssls',
+					'dockerls',
+					'eslint',
+					'gopls',
+					'html',
+					'intelephense',
+					'jsonls',
+					'rust_analyzer',
+					'sqlls',
+					'lua_ls',
+					'svelte',
+					'tailwindcss',
+					'tsserver',
+					'vimls',
+					'volar',
+					'yamlls',
+				},
+				handlers = {
+					lsp_zero.default_setup,
+					lua_ls = function()
+						-- Configured Lua LS for Nvim
+						local lua_opts = lsp_zero.nvim_lua_ls()
+						require('lspconfig').lua_ls.setup(lua_opts)
+					end
+				}
 			})
 
-			-- Configure lua language server for neovim
-			lsp.nvim_workspace()
-
-			lsp.on_attach(function(client, bufnr)
+			-- Set configurations for when LSP attaches to a buffer
+			lsp_zero.on_attach(function(client, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 				local bind = vim.keymap.set
 
@@ -94,42 +103,32 @@ return {
 				bind("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 				bind("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
 				bind("n", "<leader>K", function() vim.lsp.buf.hover() end, opts)
+				bind("n", "K", function() vim.lsp.buf.hover() end, opts)
 				bind("n", "<leader>ck", function() vim.diagnostic.open_float() end, opts)
-				bind("n", "<leader>dj", function() vim.diagnostic.goto_prev({ border = "rounded" }) end, opts)
-				bind("n", "<leader>dk", function() vim.diagnostic.goto_next({ border = "rounded" }) end, opts)
+				bind("n", "<leader>dk", function() vim.diagnostic.goto_prev({ border = "rounded" }) end, opts)
+				bind("n", "<leader>dj", function() vim.diagnostic.goto_next({ border = "rounded" }) end, opts)
 			end)
 
-			-- Configure keybindings
+			-- Set up nvim-cmp
 			local cmp = require("cmp")
-			local cmp_mappings = lsp.defaults.cmp_mappings({
-				['<C-k>'] = cmp.mapping.select_prev_item(),
-				['<C-j>'] = cmp.mapping.select_next_item(),
-				['<CR>'] = cmp.mapping.confirm({ select = false })
-			})
-
-			lsp.setup_nvim_cmp({
+			cmp.setup({
 				completion = {
 					completeopt = "menu,menuone,noinsert,noselect"
 				},
 				formatting = {
-					fields = { "kind", "abbr", "menu" },
-					format = function(entry, vim_item)
-						local kind = require("lspkind").cmp_format({
-							mode = "symbol_text",
-							maxwidth = 50,
-						})(entry, vim_item)
-						local strings = vim.split(kind.kind, "%s", { trimempty = true })
-						kind.kind = " " .. (strings[1] or "") .. " "
-						kind.menu = "    (" .. (strings[2] or "") .. ")"
-
-						return kind
-					end
+					fields = { 'abbr', 'kind', 'menu' },
+					format = require('lspkind').cmp_format()
 				},
-				mapping = cmp_mappings,
+				mapping = cmp.mapping.preset.insert({
+					['<C-k>'] = cmp.mapping.select_prev_item(),
+					['<C-j>'] = cmp.mapping.select_next_item(),
+					['<CR>'] = cmp.mapping.confirm({ select = false })
+				}),
 				preselect = cmp.PreselectMode.None,
 			})
 
-			lsp.format_on_save({
+			-- Set up format on save
+			lsp_zero.format_on_save({
 				format_opts = {
 					async = true,
 					timeout_ms = 10000,
@@ -142,8 +141,6 @@ return {
 						"blade" },
 				}
 			})
-
-			lsp.setup()
 
 			local null_ls = require("null-ls")
 
