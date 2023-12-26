@@ -5,7 +5,11 @@ return {
     keys = {
         { "<leader>e", "<cmd>Oil<cr>" }
     },
-    setup = function()
-        require('oil').setup()
+    config = function()
+        require('oil').setup({
+            view_options = {
+                show_hidden = true,
+            }
+        })
     end
 }
