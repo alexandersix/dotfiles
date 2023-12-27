@@ -3,6 +3,7 @@ return {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = { "nvim-lua/plenary.nvim" },
+        event = "VeryLazy",
         keys = {
             { "<leader><leader>", function() require("telescope.builtin").find_files({ hidden = true }) end },
             { "<leader>.", function()
