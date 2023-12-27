@@ -32,7 +32,7 @@ return {
 			{ 'rafamadriz/friendly-snippets' },
 
 			-- Null-ls
-			{ "jose-elias-alvarez/null-ls.nvim" },
+			{ "nvimtools/none-ls.nvim" },
 		},
 		config = function()
 			require("fidget").setup()
