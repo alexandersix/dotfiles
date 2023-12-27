@@ -46,6 +46,12 @@ return {
                         preview_cutoff = 80,
                     },
 
+                    extensions = {
+                        ["ui-select"] = {
+                            require("telescope.themes").get_dropdown()
+                        }
+                    },
+
                     mappings = {
                         i = {
                             ["<C-n>"] = actions.cycle_history_next,
@@ -109,11 +115,16 @@ return {
                     },
                 }
             })
+
+            require("telescope").load_extension("ui-select")
         end
     },
     {
         "nvim-telescope/telescope-fzf-native.nvim",
         cond = vim.fn.executable "make" == 1,
         build = "make"
+    },
+    {
+        "nvim-telescope/telescope-ui-select.nvim",
     }
 }
