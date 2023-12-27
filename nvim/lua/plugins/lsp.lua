@@ -69,6 +69,11 @@ return {
 						-- Configured Lua LS for Nvim
 						local lua_opts = lsp_zero.nvim_lua_ls()
 						require('lspconfig').lua_ls.setup(lua_opts)
+					end,
+					volar = function()
+						require("lspconfig").volar.setup({
+							filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
+						})
 					end
 				}
 			})
