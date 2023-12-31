@@ -35,7 +35,13 @@ return {
 			{ "nvimtools/none-ls.nvim" },
 		},
 		config = function()
-			require("fidget").setup()
+			require("fidget").setup({
+				progress = {
+					ignore = {
+						'ltex', -- Fidget was receiving a message on *every* keystroke, so we ignore
+					}
+				}
+			})
 
 			local lsp_zero = require("lsp-zero")
 
@@ -53,6 +59,7 @@ return {
 					'html',
 					'intelephense',
 					'jsonls',
+					'ltex',
 					'rust_analyzer',
 					'sqlls',
 					'lua_ls',
@@ -65,6 +72,20 @@ return {
 				},
 				handlers = {
 					lsp_zero.default_setup,
+					ltex = function()
+						require('lspconfig').ltex.setup({
+							filetypes = { "vimwiki", "markdown", "md", "pandoc", "vimwiki.markdown.pandoc" },
+							flags = { debounce_text_changes = 300 },
+							settings = {
+								ltex = {
+									additionalRules = {
+										enablePickyRules = true
+									},
+									trace = { server = "warning" }
+								}
+							}
+						})
+					end,
 					lua_ls = function()
 						-- Configured Lua LS for Nvim
 						local lua_opts = lsp_zero.nvim_lua_ls()
