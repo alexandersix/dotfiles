@@ -24,6 +24,7 @@ return {
             subdir = "Templates"
         },
         notes_subdir = "Inbox",
+        prepend_note_id = true,
         note_id_func = function(title)
             -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
             -- In this case a note with the title 'My new note' will be given an ID that looks
