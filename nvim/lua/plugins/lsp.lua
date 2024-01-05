@@ -176,7 +176,16 @@ return {
 						extra_filetypes = { "astro", "svelte" }
 					}),
 					null_ls.builtins.formatting.blade_formatter,
-					null_ls.builtins.formatting.pint
+					null_ls.builtins.formatting.phpcsfixer.with({
+						condition = function(utils)
+							return utils.root_has_file({ ".use-cs-fixer" })
+						end
+					}),
+					null_ls.builtins.formatting.pint.with({
+						condition = function(utils)
+							return not utils.root_has_file({ ".use-cs-fixer" })
+						end
+					})
 				},
 			})
 		end
