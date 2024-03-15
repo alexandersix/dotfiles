@@ -67,7 +67,7 @@ return {
 					'tailwindcss',
 					'tsserver',
 					'vimls',
-					'volar',
+					-- 'volar',
 					'yamlls',
 				},
 				handlers = {
@@ -91,11 +91,35 @@ return {
 						local lua_opts = lsp_zero.nvim_lua_ls()
 						require('lspconfig').lua_ls.setup(lua_opts)
 					end,
-					volar = function()
-						require("lspconfig").volar.setup({
-							filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
+					tsserver = function()
+						local result = vim.fn.systemlist("npm ls -g --depth=0")
+						local location = string.format("%s/node_modules/@vue/typescript-plugin", result[1])
+
+						require("lspconfig").tsserver.setup({
+							root_dir = require("lspconfig.util").root_pattern("src/App.vue", "nuxt.config.ts",
+								"nuxt.config.js"),
+							init_options = {
+								plugins = {
+									{
+										name = "@vue/typescript-plugin",
+										location = location,
+										languages = { "vue" }
+									},
+								},
+							},
+							filetypes = {
+								"javascript",
+								"json",
+								"typescript",
+								"vue",
+							}
 						})
-					end
+					end,
+					-- volar = function()
+					-- 	require("lspconfig").volar.setup({
+					-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
+					-- 	})
+					-- end
 				}
 			})
 
