@@ -82,6 +82,18 @@ second parameter is the code to be executed when the mapping is initiated.
 - Tmux Integrations
 - Undo Tree Navigation
 
+## Requirements
+
+### Volar
+
+As of version 2.0, Volar is no longer its own standalone plugin, but instead is a plugin for tsserver.
+In order to run the new version of Volar successfully, the `@vue/typescript-plugin` NPM package 
+is required. Install it globally with `npm -g install @vue/typescript-plugin`.
+
+See [this issue](https://github.com/vuejs/language-tools/issues/3925#issuecomment-1987247648) for
+more information.
+
+
 ## License
 
 [GPL3](https://choosealicense.com/licenses/gpl-3.0/)
