@@ -21,6 +21,13 @@ function SailTest(identifier)
     vim.cmd(bind_tbl[identifier])
 end
 
+function TripodTest(identifier)
+    vim.cmd("let test#php#phpunit#executable = 'tripod artisan test'")
+    vim.cmd("let test#php#pest#executable = 'tripod artisan test'")
+
+    vim.cmd(bind_tbl[identifier])
+end
+
 return {
     {
         "vim-test/vim-test",
@@ -35,6 +42,11 @@ return {
             { "<leader>tsa", function() SailTest("suite") end },
             { "<leader>tsl", function() SailTest("last") end },
             { "<leader>tsv", function() SailTest("visit") end },
+            { "<leader>ttn", function() TripodTest("nearest") end },
+            { "<leader>ttf", function() TripodTest("file") end },
+            { "<leader>tta", function() TripodTest("suite") end },
+            { "<leader>ttl", function() TripodTest("last") end },
+            { "<leader>ttv", function() TripodTest("visit") end },
         },
         config = function()
             vim.cmd('let test#strategy = "vimux"')

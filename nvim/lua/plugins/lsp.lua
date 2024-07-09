@@ -67,7 +67,7 @@ return {
 					'tailwindcss',
 					'tsserver',
 					'vimls',
-					-- 'volar',
+					'volar',
 					'yamlls',
 				},
 				handlers = {
@@ -115,11 +115,9 @@ return {
 							}
 						})
 					end,
-					-- volar = function()
-					-- 	require("lspconfig").volar.setup({
-					-- 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
-					-- 	})
-					-- end
+					volar = function()
+						require("lspconfig").volar.setup {}
+					end
 				}
 			})
 
@@ -132,6 +130,10 @@ return {
 				local ft = vim.bo[bufnr].filetype
 
 				local has_null_ls = #null_ls_sources.get_available(ft, "NULL_LS_FORMATTING") > 0
+
+				-- if client.server_capabilities.inlayHintProvider then
+				-- 	vim.lsp.buf.inlay_hint(bufnr, true)
+				-- end
 
 				bind("n", "<leader>pp", function()
 					vim.lsp.buf.format({
