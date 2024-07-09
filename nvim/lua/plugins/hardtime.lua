@@ -6,7 +6,7 @@ return {
     },
     config = function()
         require("hardtime").setup({
-            max_count = 5
+            max_count = 20
         })
     end
 }
