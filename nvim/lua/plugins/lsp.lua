@@ -109,8 +109,10 @@ return {
 							},
 							filetypes = {
 								"javascript",
+								"javascriptreact",
 								"json",
 								"typescript",
+								"typescriptreact",
 								"vue",
 							}
 						})
