@@ -5,15 +5,15 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        php = { "php_cs_fixer", "pint", stop_after_first = true }
+        php = { "php_cs_fixer", "pint", stop_after_first = true },
       },
       formatters = {
         php_cs_fixer = {
           cwd = require("conform.util").root_file({ ".use-cs-fixer" }),
-          require_cwd = true
+          require_cwd = true,
         },
-      }
-    }
+      },
+    },
   },
 
   -- Remove phpcs linter
@@ -32,19 +32,19 @@ return {
     "nvim-neotest/neotest",
     dependencies = {
       "V13Axel/neotest-pest",
-      "olimorris/neotest-phpunit"
+      "olimorris/neotest-phpunit",
     },
     opts = {
       adapters = {
         ["neotest-pest"] = {
-          filter_dirs = { "vendor" }
+          filter_dirs = { "vendor" },
         },
         ["neotest-phpunit"] = {
           root_ignore_files = { "tests/Pest.php" },
-          filter_dirs = { "vendor" }
+          filter_dirs = { "vendor" },
         },
-      }
-    }
+      },
+    },
   },
 
   -- Set up Blade syntax
@@ -75,15 +75,15 @@ return {
         },
         filetype = "blade",
       }
-    end
+    end,
   },
 
   -- Go-to-file with Blade components
   {
-    'ricardoramirezr/blade-nav.nvim',
+    "ricardoramirezr/blade-nav.nvim",
     dependencies = {
-      'hrsh7th/nvim-cmp',   -- if using nvim-cmp
+      "hrsh7th/nvim-cmp", -- if using nvim-cmp
     },
-    ft = { 'blade', 'php' } -- optional, improves startup time
-  }
+    ft = { "blade", "php" }, -- optional, improves startup time
+  },
 }
