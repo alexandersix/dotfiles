@@ -5,6 +5,8 @@
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
+map("n", "<leader>.", "noop", opts)
+
 -- File saving --
 map("n", "<leader>fs", ":w<cr>", opts)
 map("n", "<leader>wq", ":wq<cr>", opts)

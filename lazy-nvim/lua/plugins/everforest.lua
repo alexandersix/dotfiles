@@ -5,6 +5,7 @@ return {
   priority = 1000,
   config = function()
     require("everforest").setup({
+      transparent_background_level = 1,
       background = "soft",
       on_highlights = function(hl, palette)
         hl.CurSearch = { fg = palette.bg0, bg = palette.statusline1 }
