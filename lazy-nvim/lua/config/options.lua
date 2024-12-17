@@ -3,7 +3,10 @@
 -- Add any additional options here
 
 -- Telescope --
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
+
+-- fzf --
+vim.g.lazyvim_picker = "fzf"
 
 -- Languages --
 vim.g.lazyvim_php_lsp = "intelephense"
