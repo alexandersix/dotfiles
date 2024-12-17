@@ -3,7 +3,18 @@ return {
   opts = {
     scroll = { enabled = false },
     dashboard = {
+      pane_gap = 8,
+      preset = {
+        header = [[
+███╗   ██╗██╗   ██╗██╗███╗   ███╗
+████╗  ██║██║   ██║██║████╗ ████║
+██╔██╗ ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+      },
       sections = {
+        { section = "terminal", height = 5, cmd = "" },
         { section = "header" },
         {
           pane = 2,
