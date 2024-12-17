@@ -1,0 +1,89 @@
+# The syntax is "key = value". The whitespace around the equals doesn't matter.
+# background = 282c34
+# foreground= ffffff
+
+# theme = Everforest Dark - Hard
+# theme = 3024 Day
+
+#########################
+# COLORS & FONTS
+#########################
+
+font-family = "BerkeleyMono Nerd Font"
+font-family = Fira Code Nerd Font Mono
+font-size = 16
+font-thicken = true
+
+background = 333C43
+foreground = d8caac
+
+# black
+palette = 0=#3c474d
+palette = 8=#868d80
+# red
+palette = 1=#e68183
+palette = 9=#e68183
+# green
+palette = 2=#a7c080
+palette = 10=#a7c080
+# yellow
+palette = 3=#d9bb80
+palette = 11=#d9bb80
+# blue
+palette = 4=#83b6af
+palette = 12=#83b6ad
+# purple
+palette = 5=#d39bb6
+palette = 13=#d39bb6
+# aqua
+palette = 6=#87c095
+palette = 14=#87c095
+# white
+palette = 7=#868d80
+palette = 15=#868d80
+
+background-opacity = 0.9
+background-blur-radius = 24
+
+#########################
+# WINDOW
+#########################
+
+window-padding-balance = true
+window-padding-x = 12
+window-padding-y = 16
+
+adjust-cell-height = 30
+
+#########################
+# KEYBINDS
+#########################
+
+
+# Colors can be changed by setting the 16 colors of `palette`, which each color
+# being defined as regular and bold.
+#
+# black
+# palette = 0=#1d2021
+# palette = 8=#7c6f64
+# red
+# palette = 1=#cc241d
+# palette = 9=#fb4934
+# green
+# palette = 2=#98971a
+# palette = 10=#b8bb26
+# yellow
+# palette = 3=#d79921
+# palette = 11=#fabd2f
+# blue
+# palette = 4=#458588
+# palette = 12=#83a598
+# purple
+# palette = 5=#b16286
+# palette = 13=#d3869b
+# aqua
+# palette = 6=#689d6a
+# palette = 14=#8ec07c
+# white
+# palette = 7=#a89984
+# palette = 15=#fbf1c7
