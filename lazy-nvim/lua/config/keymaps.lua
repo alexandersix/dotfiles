@@ -15,6 +15,10 @@ map("n", "<leader>wq", ":wq<cr>", opts)
 map("n", "<leader>wv", ":vsp<cr>", opts)
 map("n", "<leader>wn", ":sp<cr>", opts)
 map("n", "<leader>wo", "<C-W>o", opts)
+map("n", "<leader>wh", "<C-W>h", opts)
+map("n", "<leader>wj", "<C-W>j", opts)
+map("n", "<leader>wk", "<C-W>k", opts)
+map("n", "<leader>wl", "<C-W>l", opts)
 
 -- Buffers --
 map("n", "<leader>bj", "<C-^>", opts)
