@@ -19,6 +19,9 @@ return {
           layout = { layout = { position = "right" }, preset = "sidebar", preview = false },
           matcher = { fuzzy = true },
         },
+        lsp_symbols = {
+          layout = { layout = { position = "right" }, preset = "vscode", preview = false },
+        },
       },
     },
     scroll = { enabled = false },
