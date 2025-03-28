@@ -6,7 +6,10 @@
 -- vim.g.lazyvim_picker = "telescope"
 
 -- fzf --
-vim.g.lazyvim_picker = "fzf"
+-- vim.g.lazyvim_picker = "fzf"
+
+-- Snacks Picker --
+vim.g.lazyvim_picker = "snacks"
 
 -- Languages --
 vim.g.lazyvim_php_lsp = "intelephense"
