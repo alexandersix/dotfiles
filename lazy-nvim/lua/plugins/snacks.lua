@@ -2,7 +2,7 @@ return {
   "snacks.nvim",
   keys = {
     {
-      "<leader>e",
+      "<leader>E",
       function()
         Snacks.explorer()
       end,
