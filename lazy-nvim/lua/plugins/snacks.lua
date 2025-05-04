@@ -7,6 +7,7 @@ return {
         Snacks.explorer()
       end,
     },
+    { "<leader>e", false },
   },
   opts = {
     picker = {
@@ -25,5 +26,6 @@ return {
       },
     },
     scroll = { enabled = false },
+    -- TODO: matcher.history_bonus or frecency to sort oldfiles by last opened
   },
 }
