@@ -25,8 +25,12 @@ riverctl map normal Super Q close
 riverctl map normal Super+Shift E exit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J focus-view next
-riverctl map normal Super K focus-view previous
+# riverctl map normal Super J focus-view next
+# riverctl map normal Super K focus-view previous
+riverctl map normal Super J focus-view down
+riverctl map normal Super K focus-view up
+riverctl map normal Super H focus-view left
+riverctl map normal Super L focus-view right
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
@@ -45,12 +49,12 @@ riverctl map normal Super+Shift Comma send-to-output previous
 riverctl map normal Super Return zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal Super+Shift H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal Super+Shift L send-layout-cmd rivertile "main-ratio +0.05"
 
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+# riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
+# riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -81,6 +85,7 @@ riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
 # Keybinds
 riverctl map normal Super B spawn brave-browser
+riverctl map normal Super Z spawn zen
 
 for i in $(seq 1 9); do
   tags=$((1 << ($i - 1)))
@@ -162,14 +167,15 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-riverctl rule-add -app-id "ghostty" csd
-riverctl rule-add -app-id "ghostty" tags 2
+riverctl rule-add -app-id "com.mitchellh.ghostty" ssd
+riverctl rule-add -app-id "com.mitchellh.ghostty" tags 2
 riverctl rule-add -app-id "foot" tags 2
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 16 -outer-padding 16 &
+# rivertile -view-padding 16 -outer-padding 16 &
+rivertile -view-padding 8 -outer-padding 8 &
 
 # Mouse sensitivity
 riverctl input pointer-1133-49301-Logitech_G502_X_PLUS pointer-accel -0.7
