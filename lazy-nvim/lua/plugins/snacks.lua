@@ -1,31 +1,15 @@
 return {
   "snacks.nvim",
-  keys = {
-    {
-      "<leader>E",
-      function()
-        Snacks.explorer()
-      end,
-    },
-    { "<leader>e", false },
-  },
   opts = {
     picker = {
       matcher = {
-        frecency = true,
+        frecency = true, -- Include frecency bonus
+        history_bonus = true, -- Give more weight to recent items
       },
-      sources = {
-        explorer = {
-          auto_close = true,
-          layout = { layout = { position = "right" }, preset = "sidebar", preview = false },
-          matcher = { fuzzy = true },
-        },
-        lsp_symbols = {
-          layout = { layout = { position = "right" }, preset = "vscode", preview = false },
-        },
+      debug = {
+        scores = true,
       },
     },
     scroll = { enabled = false },
-    -- TODO: matcher.history_bonus or frecency to sort oldfiles by last opened
   },
 }
